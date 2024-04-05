@@ -1,0 +1,37 @@
+{
+	"nodes":[
+		{"id":"4a944428ddb91f47","type":"text","text":"PostgreSQL (хранение оценок)\n(DBaaS Timeweb)","x":420,"y":-160,"width":300,"height":100},
+		{"id":"94a83523c6b4c9e1","type":"text","text":"Создать генератор тестовых данных на Python c работой по HTTP API с помощью SDV","x":-380,"y":-160,"width":300,"height":100},
+		{"id":"8b87d4994acf038c","type":"text","text":"Создать датасет как основу для генерации бесконечных синтетических данных","x":-760,"y":-160,"width":280,"height":100},
+		{"id":"1f24931526450e86","type":"text","text":"ELT-процесс\n(Airbyte [Prefect, dbt] / Airflow)","x":20,"y":-160,"width":300,"height":100},
+		{"id":"10ba367018d8e125","type":"text","text":"PostgreSQL read-реплика\n(потоковая асинхронная репликация)","x":420,"y":40,"width":300,"height":100},
+		{"id":"ae521f126b34df54","type":"text","text":"Tarantool\n(хранение посещаемости)","x":420,"y":-320,"width":300,"height":100},
+		{"id":"f6d5930a1fc751a7","type":"text","text":"ETL-процесс (AirByte)","x":880,"y":40,"width":260,"height":100},
+		{"id":"49fb43d6f3932fac","type":"text","text":"Первое S3-хранилище\n(Объектное хранилище VK Cloud)","x":1620,"y":40,"width":250,"height":100},
+		{"id":"64db758347adb85d","type":"text","text":"Iceberg","x":880,"y":320,"width":260,"height":60},
+		{"id":"2dd49122ec96f231","type":"text","text":"ClickHouse","x":1620,"y":320,"width":250,"height":60},
+		{"id":"05d16e70ee575ca0","type":"text","text":"Tableau","x":1960,"y":540,"width":250,"height":60},
+		{"id":"9a66f66a54d91fc2","type":"text","text":"DataLens","x":1620,"y":540,"width":250,"height":60},
+		{"id":"29a962a89f9e5c83","type":"text","text":"Второе S3-хранилище\n(Объектное хранилище VK Cloud)","x":880,"y":460,"width":260,"height":100},
+		{"id":"4d5bdb7983e4b5be","type":"text","text":"Tarantool read-реплика\n(потоковая асинхронная репликация)","x":860,"y":-320,"width":300,"height":100},
+		{"id":"df2b7ced0737531f","type":"text","text":"Spark","x":480,"y":480,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"c886012ca0179b9d","fromNode":"8b87d4994acf038c","fromSide":"right","toNode":"94a83523c6b4c9e1","toSide":"left"},
+		{"id":"4d44fd498c910a3a","fromNode":"4a944428ddb91f47","fromSide":"bottom","toNode":"10ba367018d8e125","toSide":"top"},
+		{"id":"fca98a7c2ae9830f","fromNode":"94a83523c6b4c9e1","fromSide":"right","toNode":"1f24931526450e86","toSide":"left"},
+		{"id":"d2ac6df9f28e212d","fromNode":"1f24931526450e86","fromSide":"right","toNode":"4a944428ddb91f47","toSide":"left"},
+		{"id":"f35db7f80fbb90d7","fromNode":"10ba367018d8e125","fromSide":"right","toNode":"f6d5930a1fc751a7","toSide":"left"},
+		{"id":"41ba696e1131a431","fromNode":"f6d5930a1fc751a7","fromSide":"right","toNode":"49fb43d6f3932fac","toSide":"left","label":"Parquet, AVRO, ORC файлы"},
+		{"id":"81a855bfcd55f404","fromNode":"49fb43d6f3932fac","fromSide":"bottom","toNode":"2dd49122ec96f231","toSide":"top","label":"Parquet, AVRO, ORC файлы"},
+		{"id":"4cf05edde99aaab9","fromNode":"2dd49122ec96f231","fromSide":"bottom","toNode":"9a66f66a54d91fc2","toSide":"top"},
+		{"id":"d9226ec099a2a531","fromNode":"f6d5930a1fc751a7","fromSide":"bottom","toNode":"64db758347adb85d","toSide":"top","label":"Parquet, AVRO, ORC файлы"},
+		{"id":"1a18efe522ba2579","fromNode":"64db758347adb85d","fromSide":"bottom","toNode":"29a962a89f9e5c83","toSide":"top","fromEnd":"arrow"},
+		{"id":"458401f678167fd5","fromNode":"64db758347adb85d","fromSide":"right","toNode":"2dd49122ec96f231","toSide":"left","label":"Iceberg tables"},
+		{"id":"97828e0ea0b63e17","fromNode":"2dd49122ec96f231","fromSide":"bottom","toNode":"05d16e70ee575ca0","toSide":"top"},
+		{"id":"cbda4778f6ee0ce3","fromNode":"1f24931526450e86","fromSide":"right","toNode":"ae521f126b34df54","toSide":"left"},
+		{"id":"ab89fcef6c5efe1f","fromNode":"ae521f126b34df54","fromSide":"right","toNode":"4d5bdb7983e4b5be","toSide":"left"},
+		{"id":"b15db5bdd15471d9","fromNode":"4d5bdb7983e4b5be","fromSide":"bottom","toNode":"f6d5930a1fc751a7","toSide":"top"},
+		{"id":"95369268520efdf3","fromNode":"64db758347adb85d","fromSide":"left","toNode":"df2b7ced0737531f","toSide":"top"}
+	]
+}

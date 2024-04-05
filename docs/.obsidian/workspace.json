@@ -1,0 +1,175 @@
+{
+  "main": {
+    "id": "4675920bf33d7bc0",
+    "type": "split",
+    "children": [
+      {
+        "id": "61582d59d97c4665",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6b265cfa0f7bd56b",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "План.canvas",
+                "viewState": {
+                  "x": 836.0795969369315,
+                  "y": -133.5248841293584,
+                  "zoom": -1.423460614611345
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "05a0b0b8637fbdd3",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec42cb4cce547462",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b2ea0bf0b1c7eeeb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0997ba13a4fd46a4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0dcb05c84f18838d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f741bc8f48c4aa8f",
+    "type": "split",
+    "children": [
+      {
+        "id": "612db00818b1ae21",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ea4a06110e37c6b4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "План.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "65b63b44d87a4989",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "План.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bd799106e3aa910e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c04bf464e895fee4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "План.canvas"
+              }
+            }
+          },
+          {
+            "id": "4cc43755f8dd8e72",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "canvas:Create new canvas": false,
+      "card-board:CardBoard": false,
+      "workspaces:Manage workspace layouts": false
+    }
+  },
+  "active": "6b265cfa0f7bd56b",
+  "lastOpenFiles": [
+    "План.md",
+    "План.canvas",
+    "Untitled",
+    "Untitled.md",
+    "ggg.md",
+    "Untitled Kanban.md"
+  ]
+}
