@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "datasets-generation"
+version = "0.1.0"
+description = ""
+authors = ["Deverty <bychenkov.a.k@edu.mirea.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+dearpygui = "^1.11.1"
+pandas = "^2.2.1"
+streamlit = "^1.33.0"
+pydantic = "^2.6.4"
+faker = "^24.7.1"
+
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.25.0"
+pandas-stubs = "^2.2.1.240316"
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poe.tasks]
+run = "streamlit run main.py"

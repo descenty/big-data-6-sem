@@ -15,9 +15,9 @@
               "state": {
                 "file": "План.canvas",
                 "viewState": {
-                  "x": 836.0795969369315,
-                  "y": -133.5248841293584,
-                  "zoom": -1.423460614611345
+                  "x": 1506.3724610325269,
+                  "y": 385.94491361282877,
+                  "zoom": -0.35479155853005223
                 }
               }
             }
@@ -159,8 +159,8 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "canvas:Create new canvas": false,
-      "card-board:CardBoard": false,
-      "workspaces:Manage workspace layouts": false
+      "workspaces:Manage workspace layouts": false,
+      "card-board:CardBoard": false
     }
   },
   "active": "6b265cfa0f7bd56b",

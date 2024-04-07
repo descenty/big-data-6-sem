@@ -1,11 +1,6 @@
 {
 	"nodes":[
-		{"id":"4a944428ddb91f47","type":"text","text":"PostgreSQL (хранение оценок)\n(DBaaS Timeweb)","x":420,"y":-160,"width":300,"height":100},
-		{"id":"94a83523c6b4c9e1","type":"text","text":"Создать генератор тестовых данных на Python c работой по HTTP API с помощью SDV","x":-380,"y":-160,"width":300,"height":100},
-		{"id":"8b87d4994acf038c","type":"text","text":"Создать датасет как основу для генерации бесконечных синтетических данных","x":-760,"y":-160,"width":280,"height":100},
-		{"id":"1f24931526450e86","type":"text","text":"ELT-процесс\n(Airbyte [Prefect, dbt] / Airflow)","x":20,"y":-160,"width":300,"height":100},
-		{"id":"10ba367018d8e125","type":"text","text":"PostgreSQL read-реплика\n(потоковая асинхронная репликация)","x":420,"y":40,"width":300,"height":100},
-		{"id":"ae521f126b34df54","type":"text","text":"Tarantool\n(хранение посещаемости)","x":420,"y":-320,"width":300,"height":100},
+		{"id":"95f9ee30398acdfc","x":0,"y":-560,"width":1180,"height":500,"type":"group","label":"Вместо этих шагов CSV-файлы"},
 		{"id":"f6d5930a1fc751a7","type":"text","text":"ETL-процесс (AirByte)","x":880,"y":40,"width":260,"height":100},
 		{"id":"49fb43d6f3932fac","type":"text","text":"Первое S3-хранилище\n(Объектное хранилище VK Cloud)","x":1620,"y":40,"width":250,"height":100},
 		{"id":"64db758347adb85d","type":"text","text":"Iceberg","x":880,"y":320,"width":260,"height":60},
@@ -13,8 +8,14 @@
 		{"id":"05d16e70ee575ca0","type":"text","text":"Tableau","x":1960,"y":540,"width":250,"height":60},
 		{"id":"9a66f66a54d91fc2","type":"text","text":"DataLens","x":1620,"y":540,"width":250,"height":60},
 		{"id":"29a962a89f9e5c83","type":"text","text":"Второе S3-хранилище\n(Объектное хранилище VK Cloud)","x":880,"y":460,"width":260,"height":100},
-		{"id":"4d5bdb7983e4b5be","type":"text","text":"Tarantool read-реплика\n(потоковая асинхронная репликация)","x":860,"y":-320,"width":300,"height":100},
-		{"id":"df2b7ced0737531f","type":"text","text":"Spark","x":480,"y":480,"width":250,"height":60}
+		{"id":"df2b7ced0737531f","type":"text","text":"Spark","x":480,"y":480,"width":250,"height":60},
+		{"id":"ae521f126b34df54","type":"text","text":"Tarantool\n(хранение посещаемости)","x":420,"y":-540,"width":300,"height":100},
+		{"id":"1f24931526450e86","type":"text","text":"ELT-процесс\n(Airbyte [Prefect, dbt] / Airflow)","x":20,"y":-380,"width":300,"height":100},
+		{"id":"4a944428ddb91f47","type":"text","text":"PostgreSQL (хранение оценок)\n(DBaaS Timeweb)","x":420,"y":-380,"width":300,"height":100},
+		{"id":"4d5bdb7983e4b5be","type":"text","text":"Tarantool read-реплика\n(потоковая асинхронная репликация)","x":860,"y":-540,"width":300,"height":100},
+		{"id":"10ba367018d8e125","type":"text","text":"PostgreSQL read-реплика\n(потоковая асинхронная репликация)","x":420,"y":-180,"width":300,"height":100},
+		{"id":"8b87d4994acf038c","type":"text","text":"Создать датасет как основу для генерации бесконечных синтетических данных","x":-840,"y":-160,"width":280,"height":100},
+		{"id":"94a83523c6b4c9e1","type":"text","text":"Создать генератор тестовых данных на Python c работой по HTTP API с помощью SDV","x":-460,"y":-160,"width":300,"height":100}
 	],
 	"edges":[
 		{"id":"c886012ca0179b9d","fromNode":"8b87d4994acf038c","fromSide":"right","toNode":"94a83523c6b4c9e1","toSide":"left"},
