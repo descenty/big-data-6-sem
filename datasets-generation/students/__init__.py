@@ -54,7 +54,7 @@ def students_generator(
 
         gender = choice("МЖ")
         yield Student(
-            id=f"{randint(20, 23)}И{randint(1, 9999):04d}",
+            id=student_id,
             fio=faker.name_male() if gender == "М" else faker.name_female(),
             group=group_name,
             financing=choice("БК"),

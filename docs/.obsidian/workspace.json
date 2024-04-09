@@ -8,16 +8,16 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6b265cfa0f7bd56b",
+            "id": "69c649f74d7524c2",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "План.canvas",
                 "viewState": {
-                  "x": 1506.3724610325269,
-                  "y": 385.94491361282877,
-                  "zoom": -0.35479155853005223
+                  "x": 1078.3034819418324,
+                  "y": 306.77338066446487,
+                  "zoom": -0.16163267245646293
                 }
               }
             }
@@ -160,15 +160,16 @@
       "command-palette:Open command palette": false,
       "canvas:Create new canvas": false,
       "workspaces:Manage workspace layouts": false,
+      "webpage-html-export:Export Vault to HTML": false,
       "card-board:CardBoard": false
     }
   },
-  "active": "6b265cfa0f7bd56b",
+  "active": "b2ea0bf0b1c7eeeb",
   "lastOpenFiles": [
-    "План.md",
     "План.canvas",
+    "Untitled/Untitled.md",
     "Untitled",
-    "Untitled.md",
+    "План.md",
     "ggg.md",
     "Untitled Kanban.md"
   ]

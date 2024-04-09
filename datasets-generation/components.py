@@ -36,8 +36,6 @@ def groups() -> None:
         )
     else:
         st.text("Достигнуто максимальное количество групп")
-    # with st.spinner("Загрузка..."):
-    # time.sleep(5)
     st.dataframe(get_groups(), use_container_width=True)
 
 
