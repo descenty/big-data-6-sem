@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "csv-converter"
+version = "0.1.0"
+description = ""
+authors = ["Deverty <bychenkov.a.k@edu.mirea.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyarrow = "^15.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

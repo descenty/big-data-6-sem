@@ -43,3 +43,7 @@ def students() -> None:
     df = get_students()
     st.subheader(f"Список студентов ({get_actual_students_count()})")
     st.dataframe(df)
+
+
+def csv_converter() -> None:
+    st.button("Конвертировать в форма")

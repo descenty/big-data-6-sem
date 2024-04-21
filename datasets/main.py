@@ -8,6 +8,8 @@ if __name__ == "__main__":
 
     components.configuration()
 
+    components.csv_converter()
+
     components.groups()
 
     components.students()
