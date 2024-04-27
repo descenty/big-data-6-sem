@@ -6,7 +6,7 @@ authors = ["Deverty <bychenkov.a.k@edu.mirea.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 pandas = "^2.2.1"
 streamlit = "^1.33.0"
 pydantic = "^2.6.4"
@@ -14,6 +14,9 @@ faker = "^24.7.1"
 pyarrow = "^15.0.2"
 pyiceberg = "^0.6.0"
 sqlalchemy = "^2.0.29"
+pyspark = "^3.5.1"
+sdv = "^1.12.1"
+tqdm = "^4.66.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -21,6 +24,7 @@ poethepoet = "^0.25.0"
 pandas-stubs = "^2.2.1.240316"
 ipykernel = "^6.29.4"
 pyarrow-stubs = "^10.0.1.7"
+types-tqdm = "^4.66.0.20240417"
 
 [build-system]
 requires = ["poetry-core"]

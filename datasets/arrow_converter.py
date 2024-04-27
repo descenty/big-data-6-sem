@@ -21,7 +21,10 @@ def iceberg_sqlite_catalog() -> SqlCatalog:
             "warehouse": f"file://{warehouse_path}",
         },
     )
-    if len(catalog.list_namespaces()) == 0 or "default" not in catalog.list_namespaces()[0]:
+    if (
+        len(catalog.list_namespaces()) == 0
+        or "default" not in catalog.list_namespaces()[0]
+    ):
         catalog.create_namespace("default")
     return catalog
 
@@ -38,7 +41,10 @@ def iceberg_rest_catalog() -> RestCatalog:
             "s3.secret-access-key": "minioadmin",
         },
     )
-    if len(catalog.list_namespaces()) == 0 or "default" not in catalog.list_namespaces()[0]:
+    if (
+        len(catalog.list_namespaces()) == 0
+        or "default" not in catalog.list_namespaces()[0]
+    ):
         catalog.create_namespace("default")
     return catalog
 
@@ -50,7 +56,7 @@ def get_catalog() -> RestCatalog:
 
 def csv_to_parquet(filename: str, output_filename: str):
     table: ArrowTable = csv.read_csv(filename)
-    parquet.write_table(table, f"{output_filename}.parquet")
+    parquet.write_table(table, output_filename)
 
 
 def parquet_to_iceberg_table(filename: str): ...

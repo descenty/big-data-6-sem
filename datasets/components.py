@@ -45,5 +45,11 @@ def students() -> None:
     st.dataframe(df)
 
 
+def attendance() -> None: ...
+
+
+def marks() -> None: ...
+
+
 def csv_converter() -> None:
     st.button("Конвертировать в форма")

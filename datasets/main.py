@@ -13,3 +13,7 @@ if __name__ == "__main__":
     components.groups()
 
     components.students()
+
+    components.attendance()
+
+    components.marks()
