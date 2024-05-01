@@ -160,3 +160,9 @@ cython_debug/
 #.idea/
 attendance.csv
 attendance.parquet
+
+students.csv
+students.parquet
+
+groups.csv
+groups.parquet

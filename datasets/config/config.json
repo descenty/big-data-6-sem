@@ -3,6 +3,8 @@
   "subjects_per_semester": 10,
   "students_per_group": 30,
   "groups_per_year": 250,
+  "max_groups_count": 100000,
+  "max_student_id_digits": 5,
   "specialties": [
     "Информационные технологии и разработка программного обеспечения",
     "Безопасность информационных систем и киберзащита",

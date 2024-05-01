@@ -7,6 +7,8 @@ class DatasetsConfig(BaseModel):
     subjects_per_semester: int
     students_per_group: int
     groups_per_year: int
+    max_groups_count: int
+    max_student_id_digits: int
     specialties: list[str]
     subjects: list[str]
     permanent_registration_cities: list[str]

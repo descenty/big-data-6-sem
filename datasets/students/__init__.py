@@ -1,8 +1,12 @@
+from functools import lru_cache
 from os import path
-from random import choice, randint
+import random
+from random import choices
 from typing import Generator
+from pyarrow import csv
 
 import pandas as pd
+import pyarrow
 from config import load_config
 from faker import Faker
 from groups import get_groups
@@ -26,7 +30,7 @@ class Student(BaseModel):
 def get_actual_students_count() -> int:
     if not path.isfile(students_filename):
         return 0
-    return pd.read_csv(students_filename).shape[0]
+    return csv.read_csv(students_filename).num_rows
 
 
 def get_students() -> pd.DataFrame:
@@ -35,38 +39,49 @@ def get_students() -> pd.DataFrame:
     return pd.read_csv(students_filename)
 
 
-def students_generator(
-    group_name: str,
-    used_student_ids: list[str] = [],
-) -> Generator[Student, None, None]:
-    while True:
-        attempt = 0
-        # 21И1460
-        while (
-            student_id := f"{randint(20, 23)}И{randint(1, 99999):05d}"
-        ) in used_student_ids:
-            attempt += 1
-            if attempt > 10:
-                raise ValueError(
-                    "Превышено количество попыток генерации уникального личного номера студента"
-                )
-        used_student_ids.append(student_id)
+@lru_cache
+def cities_choices_weights() -> list[float]:
+    return [
+        random.random() for _ in range(len(load_config().permanent_registration_cities))
+    ]
 
-        gender = choice("МЖ")
+
+def random_registration_city() -> Generator[str, None, None]:
+    cities: list[str] = load_config().permanent_registration_cities
+    choices_weights = cities_choices_weights()
+    while True:
+        yield choices(cities, weights=choices_weights)[0]
+
+
+def students_generator(
+    group_name: str, last_student_id_year: int, last_student_id: int, max_id_digits: int
+) -> Generator[Student, None, None]:
+    city_generator: Generator[str, None, None] = random_registration_city()
+
+    while True:
+        last_student_id += 1
+        student_id: str = (
+            f"{last_student_id_year:2d}И{str(last_student_id).zfill(max_id_digits)}"
+        )
+        if last_student_id >= 10**max_id_digits - 1:
+            last_student_id = 1
+            last_student_id_year += 1
+
+        gender: str = choices(population=["М", "Ж"], weights=[0.7321, 0.2679])[0]
+
         yield Student(
             id=student_id,
             fio=faker.name_male() if gender == "М" else faker.name_female(),
             group=group_name,
-            financing=choice("БК"),
+            financing=choices(population=["Б", "К"], weights=[0.5937, 0.4063])[0],
             gender=gender,
-            permanent_registration_city=choice(
-                load_config().permanent_registration_cities
-            ),
+            permanent_registration_city=next(city_generator),
         )
 
 
-def generate_students(used_student_ids: list[str]) -> list[Student]:
+def generate_students(max_id_digits: int) -> list[Student]:
     actual_groups: pd.DataFrame = get_groups()
+
     group_names = actual_groups["Название"].unique()
 
     actual_students: pd.DataFrame = get_students()
@@ -82,27 +97,45 @@ def generate_students(used_student_ids: list[str]) -> list[Student]:
     for group_name, students_count in students_to_generate.items():
         if students_count <= 0:
             continue
+
+        if len(generated_students) == 0:
+            max_student_id = str(actual_students["Личный номер"].max())
+            if max_student_id == "nan":
+                max_student_id = f"04И{str(0).zfill(max_id_digits)}"
+        else:
+            max_student_id = str(generated_students[-1].id)
         students: Generator[Student, None, None] = students_generator(
-            group_name, used_student_ids
+            group_name,
+            last_student_id_year=int(max_student_id[0:2]),
+            last_student_id=int(max_student_id[3:]),
+            max_id_digits=max_id_digits,
         )
         generated_students.extend([next(students) for _ in range(students_count)])
     return generated_students
 
 
 def update_students_dataset() -> None:
+    max_id_digits = load_config().max_student_id_digits
+
     if not path.isfile(students_filename):
         with open(students_filename, "w", encoding="utf-8") as f:
             f.write(
                 ",".join([f.title or "" for f in Student.model_fields.values()]) + "\n"
             )
 
-    used_student_ids = pd.read_csv(students_filename)["Личный номер"].tolist()
-
-    students_to_write = generate_students(used_student_ids)
+    students_to_write: list[Student] = generate_students(max_id_digits)
     if len(students_to_write) > 0:
         with open(students_filename, "a", encoding="utf-8") as f:
-            for student in generate_students(used_student_ids):
+            for student in students_to_write:
                 f.write(
                     ",".join([value or "" for value in student.model_dump().values()])
                     + "\n"
                 )
+
+
+def clear_students_dataset() -> None:
+    if path.isfile(students_filename):
+        with open(students_filename, "w", encoding="utf-8") as f:
+            f.write(
+                ",".join([f.title or "" for f in Student.model_fields.values()]) + "\n"
+            )
