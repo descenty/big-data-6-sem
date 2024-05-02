@@ -17,6 +17,7 @@ sqlalchemy = "^2.0.29"
 pyspark = "^3.5.1"
 sdv = "^1.12.1"
 tqdm = "^4.66.2"
+psycopg2 = "^2.9.9"
 
 
 [tool.poetry.group.dev.dependencies]
