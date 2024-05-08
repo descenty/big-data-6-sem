@@ -1,0 +1,135 @@
+{
+  "format-version" : 1,
+  "table-uuid" : "212f7b19-3ea8-488c-bcdf-80dbbf919be1",
+  "location" : "s3://iceberg-datalake/groups",
+  "last-updated-ms" : 1714659454787,
+  "last-column-id" : 2,
+  "schema" : {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "Название",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "Специальность",
+      "required" : false,
+      "type" : "string"
+    } ]
+  },
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "Название",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "Специальность",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "partition-spec" : [ ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "compatibility.snapshot-id-inheritance.enabled" : "true",
+    "commit.manifest.target-size-bytes" : "153600",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 3651772626840401180,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 3651772626840401180,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "snapshot-id" : 1464034931321761113,
+    "timestamp-ms" : 1713760147073,
+    "summary" : {
+      "operation" : "append",
+      "dremio-job-id" : "19da186d-53d5-ad7d-9465-c509385f5e00",
+      "added-data-files" : "1",
+      "added-records" : "1000",
+      "total-records" : "1000",
+      "total-files-size" : "0",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "s3://iceberg-datalake/groups/metadata/snap-1464034931321761113-1-7ca242db-a19d-41da-bce0-dcce51e26b84.avro",
+    "schema-id" : 0
+  }, {
+    "snapshot-id" : 2280235797950482048,
+    "parent-snapshot-id" : 1464034931321761113,
+    "timestamp-ms" : 1714659223724,
+    "summary" : {
+      "operation" : "append",
+      "dremio-job-id" : "19cc606a-ba79-5edf-6b81-3a1375df8e00",
+      "added-data-files" : "1",
+      "added-records" : "1",
+      "total-records" : "1001",
+      "total-files-size" : "0",
+      "total-data-files" : "2",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "s3://iceberg-datalake/groups/metadata/snap-2280235797950482048-1-461f64a5-455f-444e-9ba3-763fbf7be709.avro",
+    "schema-id" : 0
+  }, {
+    "snapshot-id" : 3651772626840401180,
+    "parent-snapshot-id" : 2280235797950482048,
+    "timestamp-ms" : 1714659454787,
+    "summary" : {
+      "operation" : "overwrite",
+      "dremio-job-id" : "19cc5f81-b548-312b-9461-122be8bd8700",
+      "deleted-data-files" : "1",
+      "deleted-records" : "1",
+      "removed-files-size" : "953",
+      "changed-partition-count" : "1",
+      "total-records" : "1000",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "s3://iceberg-datalake/groups/metadata/snap-3651772626840401180-1-5d64c4f6-8cd1-418a-ad34-ae19ff15854b.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1713760147073,
+    "snapshot-id" : 1464034931321761113
+  }, {
+    "timestamp-ms" : 1714659223724,
+    "snapshot-id" : 2280235797950482048
+  }, {
+    "timestamp-ms" : 1714659454787,
+    "snapshot-id" : 3651772626840401180
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1713760147073,
+    "metadata-file" : "s3://iceberg-datalake/groups/metadata/00000-4d29ce1d-e4f2-4402-8b54-e94338fde324.metadata.json"
+  }, {
+    "timestamp-ms" : 1714659223724,
+    "metadata-file" : "s3://iceberg-datalake/groups/metadata/00001-805cb433-8fa7-437b-bf7d-b571d665499c.metadata.json"
+  } ]
+}

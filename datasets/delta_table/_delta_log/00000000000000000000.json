@@ -1,0 +1,49 @@
+{
+    "protocol": {
+        "minReaderVersion": 1,
+        "minWriterVersion": 2
+    }
+}
+{
+    "metaData": {
+        "id": "c603abc9-39b3-4b3e-a10e-24d1559d02c9",
+        "name": null,
+        "description": null,
+        "format": {
+            "provider": "parquet",
+            "options": {}
+        },
+        "schemaString": "{\"type\":\"struct\",\"fields\":[{\"name\":\"Название\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"Специальность\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+        "partitionColumns": [],
+        "createdTime": 1714993886743,
+        "configuration": {}
+    }
+}
+{
+    "add": {
+        "path": "0-bd1fdc7d-9c69-40bb-a44b-61a2ba38fd71-0.parquet",
+        "partitionValues": {},
+        "size": 697092,
+        "modificationTime": 1714993886741,
+        "dataChange": true,
+        "stats": "{\"numRecords\": 100000, \"minValues\": {\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435\": \"\\u0418\\u0410\\u0411\\u041e-01-04\", \"\\u0421\\u043f\\u0435\\u0446\\u0438\\u0430\\u043b\\u044c\\u043d\\u043e\\u0441\\u0442\\u044c\": \"\\u0410\\u0432\\u0442\\u043e\\u043c\\u0430\\u0442\\u0438\\u0437\\u0430\\u0446\\u0438\\u044f \\u0442\\u0435\\u0441\\u0442\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u044f \\u0438 DevOps\"}, \"maxValues\": {\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435\": \"\\u0418\\u041d\\u0411\\u041e-999-23\", \"\\u0421\\u043f\\u0435\\u0446\\u0438\\u0430\\u043b\\u044c\\u043d\\u043e\\u0441\\u0442\\u044c\": \"\\u042d\\u043b\\u0435\\u043a\\u0442\\u0440\\u043e\\u043d\\u043d\\u0430\\u044f \\u043a\\u043e\\u043c\\u043c\\u0435\\u0440\\u0446\\u0438\\u044f \\u0438 \\u0446\\u0438\\u0444\\u0440\\u043e\\u0432\\u043e\\u0439 \\u043c\\u0430\\u0440\\u043a\\u0435\\u0442\\u0438\\u043d\\u0433\"}, \"nullCount\": {\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435\": 0, \"\\u0421\\u043f\\u0435\\u0446\\u0438\\u0430\\u043b\\u044c\\u043d\\u043e\\u0441\\u0442\\u044c\": 0}}",
+        "tags": null,
+        "deletionVector": null,
+        "baseRowId": null,
+        "defaultRowCommitVersion": null,
+        "clusteringProvider": null
+    }
+}
+{
+    "commitInfo": {
+        "timestamp": 1714993886743,
+        "operation": "CREATE TABLE",
+        "operationParameters": {
+            "mode": "ErrorIfExists",
+            "metadata": "{\"configuration\":{},\"createdTime\":1714993886743,\"description\":null,\"format\":{\"options\":{},\"provider\":\"parquet\"},\"id\":\"c603abc9-39b3-4b3e-a10e-24d1559d02c9\",\"name\":null,\"partitionColumns\":[],\"schemaString\":\"{\\\"type\\\":\\\"struct\\\",\\\"fields\\\":[{\\\"name\\\":\\\"Название\\\",\\\"type\\\":\\\"string\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}},{\\\"name\\\":\\\"Специальность\\\",\\\"type\\\":\\\"string\\\",\\\"nullable\\\":true,\\\"metadata\\\":{}}]}\"}",
+            "location": "file:///C:/VS%2520Code%2520Projects/big-data-6-sem/datasets/delta_table",
+            "protocol": "{\"minReaderVersion\":1,\"minWriterVersion\":2}"
+        },
+        "clientVersion": "delta-rs.0.17.3"
+    }
+}
