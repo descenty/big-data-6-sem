@@ -1,0 +1,8 @@
+{
+    "hdinsightJobSubmission.ClusterConf": [
+        {
+            "name": "http://87.242.86.99:8888 (NONE)",
+            "filePath": "c:\\VS Code Projects\\big-data-6-sem\\datasets\\iceberg.ipynb"
+        }
+    ]
+}

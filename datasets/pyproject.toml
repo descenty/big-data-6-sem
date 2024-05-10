@@ -21,6 +21,7 @@ psycopg2 = "^2.9.9"
 delta-spark = "^3.1.0"
 deltalake = "^0.17.3"
 dremio-flight = {path = "dremio_flight-1.1.0-py3-none-any.whl"}
+trino = "^0.328.0"
 
 
 [tool.poetry.group.dev.dependencies]

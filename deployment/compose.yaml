@@ -1,36 +1,11 @@
 services:
-  nessie:
-    image: ghcr.io/projectnessie/nessie:latest
-    container_name: nessie
-    ports:
-      - 19120:19120
-    depends_on:
-      - mongo
-    environment:
-      - nessie.version.store.type=MONGODB
-      - quarkus.mongodb.database=nessie
-      - quarkus.mongodb.connection-string=mongodb://root:password@mongo:27017
-    networks:
-      iceberg:
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      iceberg:
   minio:
     image: minio/minio:latest
     container_name: minio
     command: ["server", "/data", "--console-address", ":9001"]
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
       MINIO_DOMAIN: minio
       MINIO_REGION_NAME: us-east-1
       MINIO_REGION: us-east-1
@@ -43,6 +18,85 @@ services:
       iceberg:
         aliases:
           - warehouse.minio
+  mc:
+    image: minio/mc
+    container_name: mc
+    environment:
+      - AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+      - AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
+      - AWS_REGION=us-east-1
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add minio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc rm -r --force warehouse;
+      /usr/bin/mc mb warehouse;
+      /usr/bin/mc policy set public warehouse;
+      tail -f /dev/null
+      "
+    depends_on:
+      - minio
+    networks:
+      iceberg:
+  spark-iceberg:
+    image: tabulario/spark-iceberg
+    container_name: spark-iceberg
+    build: spark/
+    depends_on:
+      - rest
+      - minio
+    volumes:
+      - spark-warehouse:/home/iceberg/warehouse
+      - spark-notebooks:/home/iceberg/notebooks/notebooks
+    environment:
+      - AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+      - AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
+      - AWS_REGION=us-east-1
+    ports:
+      - 8888:8888
+      - 8080:8080
+      - 10000:10000
+      - 10001:10001
+    networks:
+      iceberg:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-iceberg
+    restart: always
+    # expose:
+      # - 5432
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: iceberg_catalog
+    networks:
+      iceberg:
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d iceberg_catalog"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  rest:
+    image: tabulario/iceberg-rest
+    container_name: iceberg-rest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - 8181:8181
+    environment:
+      - AWS_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+      - AWS_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
+      - AWS_REGION=us-east-1
+      - CATALOG_WAREHOUSE=s3://warehouse/
+      - CATALOG_IO__IMPL=org.apache.iceberg.aws.s3.S3FileIO
+      - CATALOG_S3_ENDPOINT=http://minio:9000
+      - CATALOG_URI=jdbc:postgresql://postgres-iceberg/iceberg_catalog
+      - CATALOG_JDBC_USER=admin
+      - CATALOG_JDBC_PASSWORD=password
+    networks:
+      iceberg:
   dremio:
     image: dremio/dremio-oss:latest
     container_name: dremio
@@ -54,43 +108,24 @@ services:
       - dremio-data:/opt/dremio/data
     networks:
       iceberg:
-  # mc:
-  #   image: minio/mc
-  #   container_name: mc
-  #   environment:
-  #     - AWS_ACCESS_KEY_ID=admin
-  #     - AWS_SECRET_ACCESS_KEY=password
-  #     - AWS_REGION=us-east-1
-  #   entrypoint: >
-  #     /bin/sh -c "
-  #     until (/usr/bin/mc config host add minio http://minio:9000 minioadmin minioadmin) do echo '...waiting...' && sleep 1; done;
-  #     /usr/bin/mc rm -r --force warehouse;
-  #     /usr/bin/mc mb warehouse;
-  #     /usr/bin/mc policy set public warehouse;
-  #     tail -f /dev/null
-  #     "
-  #   depends_on:
-  #     - minio
-  #   networks:
-  #     iceberg:
-  # iceberg-rest:
-  #   image: tabulario/iceberg-rest
-  #   container_name: iceberg-rest
-  #   ports:
-  #     - 8181:8181
-  #   environment:
-  #     AWS_ACCESS_KEY_ID: minioadmin
-  #     AWS_SECRET_ACCESS_KEY: minioadmin
-  #     AWS_REGION: us-east-1
-  #     CATALOG_WAREHOUSE: s3://warehouse
-  #     CATALOG_IO__IMPL: org.apache.iceberg.aws.s3.S3FileIO
-  #     CATALOG_S3_ENDPOINT: http://minio:9000
-  #   networks:
-  #     iceberg:
+  trino:
+    build: trino/
+    container_name: trino
+    ports:
+      - 8081:8080
+    networks:
+      iceberg:
+    depends_on:
+      - rest
+      - minio
+    environment:
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
+      AWS_REGION: eu-east-1
 volumes:
-  mongo-data:
   minio-data:
+  spark-warehouse:
+  spark-notebooks:
   dremio-data:
-
 networks:
   iceberg:

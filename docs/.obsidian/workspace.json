@@ -21,8 +21,21 @@
                 }
               }
             }
+          },
+          {
+            "id": "5e73f538bb9cc73e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Табличный формат хранения Iceberg для озёр данных.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -88,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "План.canvas",
+                "file": "Табличный формат хранения Iceberg для озёр данных.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "План.canvas",
+                "file": "Табличный формат хранения Iceberg для озёр данных.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "План.canvas"
+                "file": "Табличный формат хранения Iceberg для озёр данных.md"
               }
             }
           },
@@ -144,12 +157,12 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -164,8 +177,9 @@
       "card-board:CardBoard": false
     }
   },
-  "active": "69c649f74d7524c2",
+  "active": "4cc43755f8dd8e72",
   "lastOpenFiles": [
+    "Табличный формат хранения Iceberg для озёр данных.md",
     "План.canvas",
     "Untitled/Untitled.md",
     "Untitled",
